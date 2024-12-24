@@ -24,3 +24,10 @@ def view_tasks(tasks):
     else:
         print("\nNo tasks available. Add some!")
 
+def set_reminder():
+    reminder = input("Enter your reminder: ")
+    delay = int(input("Enter time in seconds after which you want to be reminded: "))
+    print(f"Reminder set! You will be reminded in {delay} seconds.")
+    time.sleep(delay)
+    print(f"\nReminder: {reminder}")
+
