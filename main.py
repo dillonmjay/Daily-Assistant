@@ -32,7 +32,14 @@ class DailyAssistant:
 
         # Main Frame
         self.main_frame = ttk.Frame(root)
-        self.main_frame.pack(pady=20, padx=20, expand=True, fill="both")
+        self.main_frame.pack(expand=True)
+
+        # Center Buttons in a Grid
+        self.main_frame.grid_columnconfigure(0, weight=1)
+        self.main_frame.grid_columnconfigure(1, weight=1)
+        self.main_frame.grid_rowconfigure(0, weight=1)
+        self.main_frame.grid_rowconfigure(1, weight=1)
+        self.main_frame.grid_rowconfigure(2, weight=1)
 
         # Buttons with hover effect and animations
         self.add_task_btn = ttk.Button(self.main_frame, text="📝 Add Task", command=self.add_task, style="Accent.TButton")
