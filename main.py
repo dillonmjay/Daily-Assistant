@@ -90,8 +90,8 @@ class DailyAssistant:
             task_window.geometry("400x300")
             task_window.configure(bg="#1e1e1e")
 
-            ttk.Label(task_window, text="Your Tasks", font=("Helvetica", 16, "bold"), foreground="#ffffff", anchor="center").pack(pady=10)
-            ttk.Label(task_window, text=tasks_str, font=("Helvetica", 12), foreground="#ffffff", anchor="center").pack(pady=10)
+            ttk.Label(task_window, text="Your Tasks", font=("Helvetica", 16, "bold"), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
+            ttk.Label(task_window, text=tasks_str, font=("Helvetica", 12), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
         else:
             messagebox.showinfo("No Tasks", "You have no tasks. Add some!")
 
@@ -99,7 +99,12 @@ class DailyAssistant:
         reminder = simpledialog.askstring("Set Reminder", "Enter your reminder:")
         try:
             delay = int(simpledialog.askstring("Set Reminder", "Enter time in seconds:"))
-            messagebox.showinfo("Reminder Set", f"Reminder set! You will be reminded in {delay} seconds.")
+            reminder_window = tk.Toplevel(self.root)
+            reminder_window.title("Reminder Set")
+            reminder_window.geometry("400x200")
+            reminder_window.configure(bg="#1e1e1e")
+
+            ttk.Label(reminder_window, text=f"Reminder will trigger in {delay} seconds!", font=("Helvetica", 14), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
             self.root.after(delay * 1000, lambda: messagebox.showinfo("Reminder", reminder))
         except ValueError:
             messagebox.showerror("Error", "Please enter a valid number for seconds.")
@@ -110,7 +115,7 @@ class DailyAssistant:
         calculator_window.geometry("400x200")
         calculator_window.configure(bg="#1e1e1e")
 
-        ttk.Label(calculator_window, text="Quick Calculator", font=("Helvetica", 16, "bold"), foreground="#ffffff", anchor="center").pack(pady=10)
+        ttk.Label(calculator_window, text="Quick Calculator", font=("Helvetica", 16, "bold"), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
         expression_entry = ttk.Entry(calculator_window, font=("Helvetica", 12))
         expression_entry.pack(pady=10)
 
@@ -131,8 +136,8 @@ class DailyAssistant:
         date_time_window.geometry("400x200")
         date_time_window.configure(bg="#1e1e1e")
 
-        ttk.Label(date_time_window, text="Current Date & Time", font=("Helvetica", 16, "bold"), foreground="#ffffff", anchor="center").pack(pady=10)
-        ttk.Label(date_time_window, text=now.strftime("%Y-%m-%d %H:%M:%S"), font=("Helvetica", 14), foreground="#ffffff", anchor="center").pack(pady=10)
+        ttk.Label(date_time_window, text="Current Date & Time", font=("Helvetica", 16, "bold"), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
+        ttk.Label(date_time_window, text=now.strftime("%Y-%m-%d %H:%M:%S"), font=("Helvetica", 14), background="#1e1e1e", foreground="#ffffff", anchor="center").pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
