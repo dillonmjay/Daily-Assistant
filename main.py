@@ -34,24 +34,39 @@ class DailyAssistant:
         self.main_frame = ttk.Frame(root)
         self.main_frame.pack(pady=20, padx=20, expand=True, fill="both")
 
-        # Buttons with icons (using Unicode characters for simplicity)
+        # Buttons with hover effect and animations
         self.add_task_btn = ttk.Button(self.main_frame, text="📝 Add Task", command=self.add_task, style="Accent.TButton")
         self.add_task_btn.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.add_task_btn)
 
         self.view_tasks_btn = ttk.Button(self.main_frame, text="📋 View Tasks", command=self.view_tasks)
         self.view_tasks_btn.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.view_tasks_btn)
 
         self.set_reminder_btn = ttk.Button(self.main_frame, text="⏰ Set Reminder", command=self.set_reminder)
         self.set_reminder_btn.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.set_reminder_btn)
 
         self.calculator_btn = ttk.Button(self.main_frame, text="➕ Quick Calculator", command=self.quick_calculator)
         self.calculator_btn.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.calculator_btn)
 
         self.date_time_btn = ttk.Button(self.main_frame, text="📅 Date & Time", command=self.check_date_time)
         self.date_time_btn.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.date_time_btn)
 
         self.exit_btn = ttk.Button(self.main_frame, text="❌ Exit", command=root.quit)
         self.exit_btn.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
+        self.add_hover_effect(self.exit_btn)
+
+    def add_hover_effect(self, button):
+        def on_enter(event):
+            button.configure(style="Hover.TButton")
+        def on_leave(event):
+            button.configure(style="TButton")
+
+        button.bind("<Enter>", on_enter)
+        button.bind("<Leave>", on_leave)
 
     def add_task(self):
         task = simpledialog.askstring("Add Task", "Enter a new task:")
