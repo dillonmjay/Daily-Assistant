@@ -8,39 +8,46 @@ class DailyAssistant:
     def __init__(self, root):
         self.root = root
         self.root.title("Daily Assistant")
-        self.root.geometry("400x300")
-        self.root.configure(bg="#f0f4f8")
+        self.root.geometry("500x400")
+        self.root.configure(bg="#ffffff")
 
         self.tasks = []
 
-        # Title Label
-        title_label = tk.Label(root, text="Daily Assistant", font=("Helvetica", 16, "bold"), bg="#f0f4f8", fg="#333")
-        title_label.pack(pady=10)
+        # Modern Styling
+        style = ttk.Style()
+        style.theme_use("clam")
+        style.configure("TFrame", background="#ffffff")
+        style.configure("TLabel", background="#ffffff", font=("Helvetica", 12))
+        style.configure("TButton", font=("Helvetica", 12), padding=5, focuscolor="none")
+
+        # Header Frame
+        header_frame = ttk.Frame(root)
+        header_frame.pack(fill="x", pady=10)
+
+        title_label = ttk.Label(header_frame, text="Daily Assistant", font=("Helvetica", 20, "bold"), anchor="center")
+        title_label.pack()
 
         # Main Frame
         self.main_frame = ttk.Frame(root)
-        self.main_frame.pack(pady=20, padx=20)
+        self.main_frame.pack(pady=20, padx=20, expand=True, fill="both")
 
-        # Buttons
-        style = ttk.Style()
-        style.configure("TButton", font=("Helvetica", 10))
-
-        self.add_task_btn = ttk.Button(self.main_frame, text="Add Task", command=self.add_task)
+        # Buttons with icons (using Unicode characters for simplicity)
+        self.add_task_btn = ttk.Button(self.main_frame, text="📝 Add Task", command=self.add_task)
         self.add_task_btn.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
 
-        self.view_tasks_btn = ttk.Button(self.main_frame, text="View Tasks", command=self.view_tasks)
+        self.view_tasks_btn = ttk.Button(self.main_frame, text="📋 View Tasks", command=self.view_tasks)
         self.view_tasks_btn.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
 
-        self.set_reminder_btn = ttk.Button(self.main_frame, text="Set Reminder", command=self.set_reminder)
+        self.set_reminder_btn = ttk.Button(self.main_frame, text="⏰ Set Reminder", command=self.set_reminder)
         self.set_reminder_btn.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
 
-        self.calculator_btn = ttk.Button(self.main_frame, text="Quick Calculator", command=self.quick_calculator)
+        self.calculator_btn = ttk.Button(self.main_frame, text="➕ Quick Calculator", command=self.quick_calculator)
         self.calculator_btn.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
 
-        self.date_time_btn = ttk.Button(self.main_frame, text="Date & Time", command=self.check_date_time)
+        self.date_time_btn = ttk.Button(self.main_frame, text="📅 Date & Time", command=self.check_date_time)
         self.date_time_btn.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
 
-        self.exit_btn = ttk.Button(self.main_frame, text="Exit", command=root.quit)
+        self.exit_btn = ttk.Button(self.main_frame, text="❌ Exit", command=root.quit)
         self.exit_btn.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
 
     def add_task(self):
