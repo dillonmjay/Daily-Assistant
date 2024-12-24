@@ -11,3 +11,8 @@ def display_menu():
     print("5. Check Date and Time")
     print("6. Exit")
 
+def add_task(tasks):
+    task = input("Enter a new task: ")
+    tasks.append(task)
+    print("Task added successfully!")
+
