@@ -31,3 +31,13 @@ def set_reminder():
     time.sleep(delay)
     print(f"\nReminder: {reminder}")
 
+def quick_calculator():
+    print("\nSimple Calculator")
+    print("Enter your expression (e.g., 5 + 3 or 12 / 4):")
+    try:
+        expression = input(">> ")
+        result = eval(expression)
+        print(f"Result: {result}")
+    except Exception as e:
+        print(f"Error in calculation: {e}")
+
