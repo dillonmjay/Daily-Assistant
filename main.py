@@ -46,3 +46,25 @@ def check_date_time():
     print("\nCurrent Date and Time:")
     print(now.strftime("%Y-%m-%d %H:%M:%S"))
 
+def main():
+    tasks = []
+    while True:
+        display_menu()
+        choice = input("Choose an option (1-6): ")
+
+        if choice == '1':
+            add_task(tasks)
+        elif choice == '2':
+            view_tasks(tasks)
+        elif choice == '3':
+            set_reminder()
+        elif choice == '4':
+            quick_calculator()
+        elif choice == '5':
+            check_date_time()
+        elif choice == '6':
+            print("Goodbye! Have a great day!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
