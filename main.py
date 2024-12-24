@@ -41,3 +41,8 @@ def quick_calculator():
     except Exception as e:
         print(f"Error in calculation: {e}")
 
+def check_date_time():
+    now = datetime.datetime.now()
+    print("\nCurrent Date and Time:")
+    print(now.strftime("%Y-%m-%d %H:%M:%S"))
+
