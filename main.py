@@ -35,10 +35,11 @@ class DailyAssistant:
         self.exit_btn.grid(row=2, column=1, padx=10, pady=10)
 
     def add_task(self):
-        task = tk.simpledialog.askstring("Add Task", "Enter a new task:")
+        task = simpledialog.askstring("Add Task", "Enter a new task:")
         if task:
             self.tasks.append(task)
             messagebox.showinfo("Success", "Task added successfully!")
+
 
     def view_tasks(self):
         if self.tasks:
